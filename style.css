@@ -1,0 +1,291 @@
+/* --- 1. RESET DAN DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h2 {
+    color: #5d001e; /* Warna merah marun/cokelat */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+/* Container utama untuk halaman yang berbeda */
+main {
+    padding: 80px 5% 40px;
+    min-height: 70vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 2. NAVIGASI DAN HEADER --- */
+header {
+    background-color: #5d001e;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo a {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li a {
+    color: white;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.nav-links li a:hover {
+    background-color: #7b0028;
+}
+
+/* --- HERO SECTION (GAPURA) --- */
+.hero-section {
+    min-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    
+    /* PANGGIL GAMBAR HERO JATIM */
+    background-image: url('img/hero-jatim.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Layer gelap di atas gambar Hero Section */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
+}
+
+/* Pastikan teks berada di atas layer gelap */
+.hero-section h1, 
+.hero-section h3, 
+.hero-section a {
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-section h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #f0f0f0;
+    color: #5d001e;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #ccc;
+}
+
+
+/* --- 3. FOOTER --- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* --- 4. TATA LETAK UTAMA: EKSPLORASI (4 KATEGORI) --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-card {
+    position: relative;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- GAMBAR LATAR BELAKANG KATEGORI (PENTING: MENGGUNAKAN NAMA FILE DETAIL) --- */
+
+.category-card.pakaian {
+    background-image: url('img/pakaian_kebaya.jpeg'); 
+}
+
+.category-card.tari {
+    background-image: url('img/tari_reog.jpeg');
+}
+
+.category-card.makanan {
+    background-image: url('img/makanan_rawon.jpeg');
+}
+
+.category-card.kerajinan {
+    background-image: url('img/kerajinan_topeng.jpeg');
+}
+
+
+/* Overlay dan Teks Card */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Gelapkan gambar agar teks terlihat */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-overlay h3 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card-overlay p {
+    font-size: 0.9em;
+    margin-top: 5px;
+    color: #ccc;
+}
+
+/* --- 5. TATA LETAK KATEGORI (category.html) dan DETAIL (detail-item.html) --- */
+
+/* Gaya untuk Halaman Daftar Item (category.html) */
+.item-grid-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.list-item-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s;
+}
+
+.list-item-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-item-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.list-item-info {
+    padding: 15px;
+}
+
+.list-item-info h3 {
+    margin-top: 0;
+    color: #5d001e;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
+
+/* Gaya untuk Halaman Detail Item (detail-item.html) */
+.item-block {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.detail-image-block {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain; 
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: bold;
+}
